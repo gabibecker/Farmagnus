@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="fundo_cartao">#F3F6FA</color>
+    <color name="cinza_200">#E0E6EE</color>
 </resources>

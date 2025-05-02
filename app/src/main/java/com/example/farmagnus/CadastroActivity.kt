@@ -1,18 +1,20 @@
 package com.example.farmagnus
 
-import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.View.VISIBLE
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.farmagnus.databinding.ActivityCadastroBinding
 import com.example.farmagnus.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class CadastroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val binding: ActivityCadastroBinding = ActivityCadastroBinding.inflate(layoutInflater)
         enableEdgeToEdge()
-        val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -20,11 +22,17 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.botaoCadastro.setOnClickListener {
-            startActivity(Intent(this, CadastroActivity::class.java))
-            finishAffinity()
+        binding.btnDados.setOnClickListener{
+            binding.linearLayoutDados.visibility = VISIBLE
+            binding.linearLayoutendereco.visibility = View.GONE
+            binding.botaoEntrar.text = "Continuar"
         }
+
+        binding.btnEndereco.setOnClickListener {
+            binding.linearLayoutDados.visibility = View.GONE
+            binding.linearLayoutendereco.visibility = VISIBLE
+            binding.botaoEntrar.text = "Entrar"
+        }
+
     }
-
-
 }

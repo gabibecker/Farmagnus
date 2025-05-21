@@ -1,33 +1,20 @@
 package com.example.farmagnus
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.farmagnus.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class FinalizarCompraActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_finalizar_compra)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        binding.botaoCadastro.setOnClickListener {
-            startActivity(Intent(this, CadastroActivity::class.java))
-            finishAffinity()
-        }
-        binding.botaoEntrar.setOnClickListener {
-            startActivity(Intent(this, MenuInicialActivity::class.java))
-        }
     }
-
-
 }

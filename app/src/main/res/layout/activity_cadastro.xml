@@ -10,7 +10,6 @@
     android:padding="5dp"
     tools:context=".CadastroActivity">
 
-    <!-- ─── LOGO ─────────────────────────────────────────────── -->
     <TextView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
@@ -28,7 +27,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <!-- ─── TÍTULO ───────────────────────────────────────────── -->
     <TextView
         android:id="@+id/tituloCriarConta"
         android:layout_width="wrap_content"
@@ -42,7 +40,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo"/>
 
-    <!-- ─── DESCRIÇÃO ────────────────────────────────────────── -->
     <TextView
         android:id="@+id/descCriarConta"
         android:layout_width="wrap_content"
@@ -53,7 +50,6 @@
         app:layout_constraintStart_toStartOf="@id/tituloCriarConta"
         app:layout_constraintTop_toBottomOf="@id/tituloCriarConta"/>
 
-    <!-- ─── TOGGLE Dados / Endereço ──────────────────────────── -->
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/toggleGroup"
         android:layout_width="0dp"
@@ -93,7 +89,6 @@
             app:cornerRadius="5dp"/>
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
-    <!-- ─── SCROLL com UM contêiner ──────────────────────────── -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll"
         android:layout_width="0dp"
@@ -106,7 +101,6 @@
         app:layout_constraintTop_toBottomOf="@id/toggleGroup"
         app:layout_constraintBottom_toTopOf="@id/botaoEntrar">
 
-        <!-- ÚNICO filho direto da NestedScrollView -->
         <LinearLayout
             android:id="@+id/containerFormularios"
             android:layout_width="match_parent"
@@ -114,7 +108,7 @@
             android:orientation="vertical"
             android:layout_marginHorizontal="15dp">
 
-            <!-- ── BLOCO ENDEREÇO ── -->
+            <!--BLOCO ENDEREÇO -->
             <LinearLayout
                 android:id="@+id/linearLayoutendereco"
                 android:layout_width="match_parent"
@@ -213,7 +207,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
-            <!-- ── BLOCO DADOS PESSOAIS ── -->
+            <!--BLOCO DADOS PESSOAIS -->
             <LinearLayout
                 android:id="@+id/linearLayoutDados"
                 android:layout_width="match_parent"
@@ -312,10 +306,8 @@
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
-        </LinearLayout> <!-- fim containerFormularios -->
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <!-- ─── BOTÃO ENTRAR ─────────────────────────────────────── -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/botaoEntrar"
         android:layout_width="match_parent"

@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home_24dp_000000"
+        android:title="Início" />
+    <item
+        android:id="@+id/nav_cart"
+        android:icon="@drawable/shopping_cart_24dp_000000_fill0_wght300_grad0_opsz24"
+        android:title="Carrinho" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/icons8_convidado_masculino_48"
+        android:title="Perfil" />
+</menu>

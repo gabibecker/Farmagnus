@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/LinearLayoutPedidoDetalhado"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/drawable_boxstrokegray">
+
+        <ImageButton
+            android:id="@+id/ImagemMedicamento"
+            android:layout_weight="2.3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/drawable_boxgray"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:orientation="vertical"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/nomeMedicamento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome do medicamento"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/cms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CMS"
+                android:textColor="#4a4a4a"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                />
+
+            <TextView
+                android:id="@+id/dosagem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500mg - 20 comprimidos"
+                android:layout_marginStart="10dp"
+                android:textSize="12dp"
+                android:textColor="#757575"/>
+
+            <TextView
+                android:id="@+id/preco"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="R$ 12,99"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:layout_marginBottom="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="match_parent"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="end"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/lixeira"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/delete_24dp_bb271a_fill0_wght300_grad_25_opsz24"
+                    android:background="@color/white"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/boxQuantidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:padding="5dp"
+                android:background="@drawable/drawable_boxstrokegray">
+
+                <ImageButton
+                    android:id="@+id/botaoMenos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:src="@drawable/remove_24dp_000000_fill0_wght300_grad_25_opsz24" />
+
+                <TextView
+                    android:id="@+id/quantidade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15"
+                    android:textStyle="bold"
+                    android:textSize="15dp"/>
+
+                <ImageButton
+                    android:id="@+id/botaoMais"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_24dp_000000_fill0_wght300_grad_25_opsz24"
+                    android:background="@color/white"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

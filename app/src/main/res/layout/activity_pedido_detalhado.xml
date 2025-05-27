@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".PedidoDetalhado">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_custom"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        app:title="Nome do medicamento"
+        app:titleCentered="true"
+        app:titleTextColor="@android:color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:navigationIcon="@drawable/icons8_esquerda_24"
+        />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_custom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/view2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                app:layout_constraintTop_toBottomOf="@id/view2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/drawable_boxgray"
+                android:layout_marginHorizontal="50dp"
+                android:paddingVertical="40dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/ImagemMedicamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icons8_rem_dio_100__1_"
+                    android:background="#cccccc" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textNomeMedicamento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome do Medicamento"
+                android:textSize="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/textLaboratorio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Laboratório"
+                android:textSize="18dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:textStyle="italic"/>
+
+            <TextView
+                android:id="@+id/textQuantidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500mg - 20 comprimidos"
+                android:textSize="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:textStyle="italic"/>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#CCCCCC"
+                android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="15dp"
+                app:layout_constraintTop_toBottomOf="@id/toolbar_custom"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/textValor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R$20,00"
+                android:textSize="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
+                android:textStyle="bold"
+                android:textColor="#b60000"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/botaoFinalizarCompra"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/drawable_logo"
+                android:text="Comprar agora"
+                android:textColor="@color/white"
+                android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/botaoAdicionarCarrinho"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="30dp"
+                android:background="@drawable/drawable_whitebutton"
+                android:text="Finalizar Compra"
+                android:textColor="@color/black"
+                android:textAllCaps="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descrição"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/textDescricao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:textAlignment="textStart"
+                android:text="O paracetamol é um medicamento com propriedades analgésicas e antipiréticas utilizado para o alívio temporário de dores leves a moderadas e redução da febre. Não possui propriedades anti-inflamatórias clinicamente significativas."
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

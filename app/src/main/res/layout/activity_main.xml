@@ -10,7 +10,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-    android:id="@+id/editTextCPF"
+        android:id="@+id/layoutCPF"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="30dp"
@@ -27,7 +27,7 @@
     app:layout_constraintTop_toBottomOf="@+id/initialMessage">
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editText1"
+        android:id="@+id/editTextCPF"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:inputType="text"
@@ -49,10 +49,10 @@
         app:boxStrokeWidth="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCPF">
+        app:layout_constraintTop_toBottomOf="@+id/layoutCPF">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText2"
+            android:id="@+id/editTextSenha"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="text"

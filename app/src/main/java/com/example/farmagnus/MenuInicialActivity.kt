@@ -1,5 +1,6 @@
 package com.example.farmagnus
 import adapter.MedicamentoAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -166,6 +167,11 @@ class MenuInicialActivity : AppCompatActivity() {
                 // ARRUMAR DEPOIS
             }
         )
+
+        binding.botaoFinalizarCompra.setOnClickListener {
+            val intent = Intent(this, FinalizarCompraActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = adapter

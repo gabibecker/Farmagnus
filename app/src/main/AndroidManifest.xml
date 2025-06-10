@@ -13,16 +13,13 @@
         android:theme="@style/Theme.Farmagnus"
         tools:targetApi="31">
         <activity
-            android:name=".PedidoDetalhado"
+            android:name=".MedicamentoDetalhado"
             android:exported="false" />
         <activity
             android:name=".PedidoConfirmado"
             android:exported="false" />
         <activity
             android:name=".FinalizarCompraActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
             android:exported="false" />
         <activity
             android:name=".MenuInicialActivity"

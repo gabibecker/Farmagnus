@@ -1,4 +1,4 @@
-package com.example.farmagnus.adapter
+package adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,13 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.farmagnus.R
-import model.PedidoItem
+import model.Carrinho
 
-class PedidoDetalhadoAdapter(
-    private val items: MutableList<PedidoItem>,
+class PedidoAdapter(
+    private val items: List<Carrinho>,
     private val onDeleteClick: (position: Int) -> Unit,
-    private val onQuantityChanged: (position: Int, newQuantity: Int) -> Unit
-) : RecyclerView.Adapter<PedidoDetalhadoAdapter.PedidoViewHolder>() {
+    private val onQuantityChanged: (position: Int, newQuantity: Int) -> Unit,
+    private val onItemClick: (position: Int) -> Unit
+) : RecyclerView.Adapter<PedidoAdapter.PedidoViewHolder>() {
 
     inner class PedidoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imagemMedicamento: ImageButton = itemView.findViewById(R.id.ImagemMedicamento)
@@ -29,7 +30,9 @@ class PedidoDetalhadoAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PedidoViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_pedido_detalhado, parent, false)
+        val view = LayoutInflater
+            .from(parent.context)
+            .inflate(R.layout.item_pedido_detalhado, parent, false)
         return PedidoViewHolder(view)
     }
 
@@ -40,10 +43,11 @@ class PedidoDetalhadoAdapter(
             .load(item.imagemUrl)
             .into(holder.imagemMedicamento)
 
-        holder.nomeMedicamento.text = item.nomeMedicamento
-        holder.cms.text = item.cms
+        holder.nomeMedicamento.text = item.nome
+        holder.cms.text = item.fabricante
         holder.descricao.text = item.dosagem
         holder.preco.text = item.preco
+
         holder.quantidade.text = item.quantidade.toString()
 
         holder.lixeira.setOnClickListener {
@@ -62,6 +66,10 @@ class PedidoDetalhadoAdapter(
                 notifyItemChanged(position)
                 onQuantityChanged(position, item.quantidade)
             }
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClick(position)
         }
     }
 

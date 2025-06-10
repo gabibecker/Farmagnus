@@ -1,10 +1,12 @@
 package model
 
-data class PedidoItem(
-    val nomeMedicamento: String,
-    val cms: String,
-    val dosagem: String,
-    val preco: String,
-    var quantidade: Int,
-    val imagemUrl: String
-)
+data class Pedido(
+    var id: String,
+    var precoTotal: Float,
+    var retirada: String,
+    var formaPagamento: String,
+    var dataPedido: String,
+    var statusPedido: String,
+    var endereco: String,
+    var statusPagamento: String //o status do pagamento só é alterado quando a farmacia confirma pela web
+    )

@@ -52,4 +52,10 @@ dependencies {
     implementation(libs.material.v1110)
     implementation(libs.androidx.recyclerview)
     implementation(libs.glide)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation("androidx.fragment:fragment-ktx:1.6.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
 }

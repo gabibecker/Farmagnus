@@ -5,14 +5,20 @@ import androidx.appcompat.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.farmagnus.databinding.ActivityCadastroBinding
 import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import model.User
+import retrofit.RetrofitInstance
 
 class CadastroActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCadastroBinding
@@ -39,7 +45,7 @@ class CadastroActivity : AppCompatActivity() {
         this.addTextChangedListener(object : TextWatcher {
             var isUpdating = false
             val cpfMask = "###.###.###-##"
-            val onlyDigits = Regex("[^\\d]")
+            val onlyDigits = Regex("\\D")
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { }
@@ -134,8 +140,34 @@ class CadastroActivity : AppCompatActivity() {
             telefone = binding.campoTelefone.text.toString(),
             senha = binding.campoSenha.text.toString()
         )
-         //REQUISIÇÃO AQ
-         startActivity(Intent(this, MainActivity::class.java))
+         lifecycleScope.launch {
+          try {
+              RetrofitInstance.apiService.createUser(user)
+              withContext(Main) {
+                  AlertDialog.Builder(this@CadastroActivity)
+                      .setTitle("Criado com sucesso!")
+                      .setMessage("Sua conta foi criada com sucesso!")
+                      .setPositiveButton("OK") { dialog, _ ->
+                          startActivity(Intent(this@CadastroActivity, MainActivity::class.java))
+                          finishAffinity()
+                          dialog.dismiss()
+                      }
+                      .setCancelable(false)
+                      .show()
+              }
+          }   catch (e: Exception) {
+              Log.e("CadastroActivity", "Erro ao salvar o usuário", e)
+              withContext(Main){
+                  AlertDialog.Builder(this@CadastroActivity)
+                      .setTitle("Atenção!")
+                      .setMessage("Ocorreu um erro ao salvar seu cadastro! Tente novamente mais tarde.")
+                      .setNegativeButton("OK") { dialog, _ ->
+                          dialog.dismiss()
+                      }
+                      .show()
+              }
+          }
+         }
      } else {
          AlertDialog.Builder(this)
              .setTitle("Atenção!")

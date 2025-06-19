@@ -4,17 +4,25 @@ import adapter.MedicamentoAdapter
 import adapter.PedidoAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.farmagnus.databinding.ActivityMenuInicialBinding
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import model.Carrinho
 import model.Medicamento
+import service
+
 
 class MenuInicialActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMenuInicialBinding
@@ -78,23 +86,23 @@ class MenuInicialActivity : AppCompatActivity() {
     }
 
     private fun menuinicial() {
-        val listaMedicamentos = listOf(
-            Medicamento(
-                "1",
-                "Paracetamol",
-                "EMS",
-                "500mg – 20 comprimidos",
-                "R$ 12,99",
-                "dor de cabeca"
-            )
-        ) //recebe da api a lista depois
-
-        binding.rvMedicamentos.layoutManager = GridLayoutManager(this, 2)
-        binding.rvMedicamentos.adapter = MedicamentoAdapter(listaMedicamentos) { med ->
-            val intent = Intent(this, MedicamentoDetalhado::class.java)
-            intent.putExtra("ID_MED", med.id)
-            startActivity(intent)
-        }
+        try {
+            lifecycleScope.launch(IO) {
+                Log.d("chegou 1", "testeeeeeee")
+                val listaMedicamentos = service.getAll()
+                Log.d("chegou 2", "teste")
+                withContext(Main) {
+                    binding.rvMedicamentos.layoutManager = GridLayoutManager(this@MenuInicialActivity, 2)
+                    binding.rvMedicamentos.adapter = MedicamentoAdapter(listaMedicamentos) { med ->
+                        val intent = Intent(this@MenuInicialActivity, MedicamentoDetalhado::class.java)
+                        intent.putExtra("ID_MED", med.id)
+                        startActivity(intent)
+                    }
+                }
+            }
+        } catch (e: Exception) {
+                Toast.makeText(this, "Erro ao carregar medicamentos", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun carrinho() {

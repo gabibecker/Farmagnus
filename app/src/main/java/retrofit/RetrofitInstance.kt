@@ -1,20 +1,18 @@
-package retrofit
 
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit.MedicamentoService
+import retrofit2.converter.moshi.MoshiConverterFactory
 
-object RetrofitInstance {
+// Criação do Moshi
+val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
-    private const val BASE_URL = "https://localhost:3000"
+// Criando a instância do Retrofit
+val retrofit: Retrofit = Retrofit.Builder()
+    .baseUrl("http://192.168.0.102:8080/")  // Substitua pelo seu URL base
+    .addConverterFactory(MoshiConverterFactory.create(moshi))  // Usando o Moshi
+    .build()
 
-    val retrofit: Retrofit by lazy {
-        Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
-    val apiService: ApiService by lazy {
-        retrofit.create(ApiService::class.java)
-    }
-}
+// Aqui você pode criar seu serviço Retrofit
+val service: MedicamentoService = retrofit.create(MedicamentoService::class.java)

@@ -3,9 +3,10 @@ package model
 data class Medicamento(
     val id: String,
     val nome: String,
-    val fabricante: String,
-    val dosagem: String,
+    val código_de_barras:String,
     val preco: String,
+    val laboratorio: String,
+    val apresentacao: String,
     val descricao:String,
-    val imagemUrl: String? = null
+    val img: String
 )

@@ -25,11 +25,11 @@ class MedicamentoAdapter(
 
         fun bind(m: Medicamento) {
             nome.text = m.nome
-            fab.text = m.fabricante
-            dose.text = m.dosagem
+            fab.text = m.laboratorio
+            dose.text = m.apresentacao
             preco.text = m.preco
 
-            m.imagemUrl?.let {
+            m.img?.let {
                 Glide.with(img.context)
                     .load(it)
                     .placeholder(R.color.white)

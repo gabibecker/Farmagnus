@@ -18,7 +18,6 @@ import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import model.User
-import retrofit.RetrofitInstance
 
 class CadastroActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCadastroBinding
@@ -142,7 +141,6 @@ class CadastroActivity : AppCompatActivity() {
         )
          lifecycleScope.launch {
           try {
-              RetrofitInstance.apiService.createUser(user)
               withContext(Main) {
                   AlertDialog.Builder(this@CadastroActivity)
                       .setTitle("Criado com sucesso!")

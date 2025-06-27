@@ -1,11 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Base.Theme.Farmagnus" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorOnPrimary">@color/black</item>
+    <!-- Tema base que usa o tema padrão do Material3 (Modo Claro e Escuro) -->
+    <style name="Base.Theme.Farmagnus" parent="Theme.Material3.DayNight.NoActionBar"/>
 
-        <item name="android:statusBarColor">@color/white</item>
-        <item name="android:navigationBarColor">@color/white</item>
-    </style>
-
+    <!-- Tema específico da sua aplicação, que herda do tema base -->
     <style name="Theme.Farmagnus" parent="Base.Theme.Farmagnus" />
 </resources>

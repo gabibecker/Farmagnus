@@ -11,7 +11,7 @@ import com.example.farmagnus.R
 import model.Carrinho
 
 class PedidoAdapter(
-    private val items: List<Carrinho>,
+    private var items: MutableList<Carrinho>,
     private val onDeleteClick: (position: Int) -> Unit,
     private val onQuantityChanged: (position: Int, newQuantity: Int) -> Unit,
     private val onItemClick: (position: Int) -> Unit
@@ -20,7 +20,6 @@ class PedidoAdapter(
     inner class PedidoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imagemMedicamento: ImageButton = itemView.findViewById(R.id.ImagemMedicamento)
         val nomeMedicamento: TextView = itemView.findViewById(R.id.nomeMedicamento)
-        val cms: TextView = itemView.findViewById(R.id.cms)
         val descricao: TextView = itemView.findViewById(R.id.dosagem)
         val preco: TextView = itemView.findViewById(R.id.preco)
         val quantidade: TextView = itemView.findViewById(R.id.quantidade)
@@ -44,10 +43,8 @@ class PedidoAdapter(
             .into(holder.imagemMedicamento)
 
         holder.nomeMedicamento.text = item.nome
-        holder.cms.text = item.fabricante
         holder.descricao.text = item.dosagem
         holder.preco.text = item.preco
-
         holder.quantidade.text = item.quantidade.toString()
 
         holder.lixeira.setOnClickListener {
@@ -55,16 +52,14 @@ class PedidoAdapter(
         }
 
         holder.botaoMais.setOnClickListener {
-            item.quantidade++
-            notifyItemChanged(position)
-            onQuantityChanged(position, item.quantidade)
+            val newQuantity = item.quantidade + 1
+            onQuantityChanged(position, newQuantity)
         }
 
         holder.botaoMenos.setOnClickListener {
             if (item.quantidade > 1) {
-                item.quantidade--
-                notifyItemChanged(position)
-                onQuantityChanged(position, item.quantidade)
+                val newQuantity = item.quantidade - 1
+                onQuantityChanged(position, newQuantity)
             }
         }
 
@@ -74,4 +69,10 @@ class PedidoAdapter(
     }
 
     override fun getItemCount(): Int = items.size
+
+    fun updateData(newItens: List<Carrinho>) {
+        items.clear()
+        items.addAll(newItens)
+        notifyDataSetChanged()
+    }
 }

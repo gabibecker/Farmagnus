@@ -1,6 +1,6 @@
 package adapter
 
-
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +9,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.farmagnus.R
+import com.example.farmagnus.MedicamentoDetalhado
 import model.Medicamento
 
 class MedicamentoAdapter(
-    private val items: List<Medicamento>,
-    private val onClick: (Medicamento) -> Unit
+    private val items: MutableList<Medicamento>,  // Lista de Medicamentos
+    private val onClick: (Medicamento) -> Unit  // Click handler para o item
 ) : RecyclerView.Adapter<MedicamentoAdapter.MedViewHolder>() {
 
     inner class MedViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -26,17 +27,28 @@ class MedicamentoAdapter(
         fun bind(m: Medicamento) {
             nome.text = m.nome
             fab.text = m.laboratorio
-            dose.text = m.apresentacao
+            dose.text = m.descricao
             preco.text = m.preco
 
+            // Usando Glide para carregar a imagem (se disponível)
             m.img?.let {
                 Glide.with(img.context)
                     .load(it)
-                    .placeholder(R.color.white)
+                    .placeholder(R.color.white)  // Placeholder enquanto a imagem carrega
                     .into(img)
             }
 
-            itemView.setOnClickListener { onClick(m) }
+            // Ao clicar, envia os dados do medicamento para a tela de detalhes
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, MedicamentoDetalhado::class.java)
+                intent.putExtra("ID_MED", m.id)  // Passa o ID do medicamento
+                intent.putExtra("NOME", m.nome)  // Passa o nome do medicamento
+                intent.putExtra("FABRICANTE", m.laboratorio)  // Passa o fabricante
+                intent.putExtra("DOSAGEM", m.descricao)  // Passa a descrição
+                intent.putExtra("PRECO", m.preco)  // Passa o preço
+                intent.putExtra("IMAGEM", m.img)  // Passa a URL da imagem
+                itemView.context.startActivity(intent)
+            }
         }
     }
 
@@ -47,8 +59,8 @@ class MedicamentoAdapter(
     }
 
     override fun onBindViewHolder(holder: MedViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind(items[position])  // Passa o medicamento para o view holder
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = items.size  // Retorna o número de itens na lista
 }

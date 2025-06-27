@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.fragment.ktx.v188)
     implementation(libs.kotlinx.coroutines.android)
+    implementation("com.google.code.gson:gson:2.8.8")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
     implementation("androidx.core:core-ktx:1.6.0")

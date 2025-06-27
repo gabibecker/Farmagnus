@@ -6,7 +6,7 @@ data class Carrinho(
     val fabricante: String,
     val dosagem: String,
     val preco: String,
-    val descricao:String,
-    val imagemUrl: String? = null,
-    var quantidade: Int
+    val descricao: String,
+    val imagemUrl: String?, // Pode ser nula se não houver imagem
+    var quantidade: Int // **CRUCIAL: DEVE SER 'var' para permitir alterações na quantidade**
 )

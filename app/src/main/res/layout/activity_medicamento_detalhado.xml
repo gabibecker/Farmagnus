@@ -130,16 +130,6 @@
                 android:textColor="@color/white"
                 android:textAllCaps="false" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/botaoAdicionarCarrinho"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginHorizontal="30dp"
-                android:background="@drawable/drawable_whitebutton"
-                android:text="Finalizar Compra"
-                android:textColor="@color/black"
-                android:textAllCaps="false" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
